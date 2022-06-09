@@ -39,4 +39,23 @@ const crearObstaculos = () => {
     obstaculos.push(obstaculo);
 }
 
+const cargaInicial = () => {
+    destructor.dibujar();
+    setInterval(jugar, 1000);
+    setInterval(crearObstaculos, 7000);
+};
 
+const moverDestructor = (e) => {
+    destructor.borrar();
+    if (e.key === "ArrowLeft") {
+        destructor.x -= 15;
+    }
+    if (e.key === "ArrowRight") {
+        destructor.x += 15;
+    }
+    destructor.dibujar();
+};
+
+window.addEventListener("load", cargaInicial);
+
+window.addEventListener("keydown", moverDestructor);
