@@ -30,6 +30,7 @@ const jugar = () => {
 const crearObstaculos = () => {
     const randomPosicionY = Math.floor(Math.random() * 480);
     const obstaculo = new Objeto(
+        randomPosicionY,
         570,
         120,
         60,
