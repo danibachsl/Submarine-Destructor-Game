@@ -1,65 +1,75 @@
 const canvas = document.querySelector("#canvas");
+canvas.width = 1000;
+canvas.height = 600;
 const ctx = canvas.getContext("2d");
 
-canvas.style.backgroundColor = "lightgray";
+// canvas.style.backgroundColor = "lightgray";
 
-let cocheImagen = new Image();
-cocheImagen.src = "src/destructor.png";
+// var background = new Image();
+// background.src = "src/fondo_mar.jpeg";
+
+// // Make sure the image is loaded first otherwise nothing will draw.
+// background.onload = function(){
+//     ctx.drawImage(background,0,0, 1000, 600);   
+// }
+//
+
+let destructorImagen = new Image();
+destructorImagen.src = "src/destructor.png";
 
 let obstaculoImagen = new Image();
 obstaculoImagen.src = "src/icono_submarino.png";
 
 const obstaculos = [];
 
-const coche = new Objeto(731.5, 75, 163, 37, cocheImagen, ctx);
+const destructor = new Objeto(731.5, 75, 213, 95, destructorImagen, ctx);
+
+
 
 const jugar = () => {
   for (let obstaculo of obstaculos) {
     obstaculo.borrar();
-    obstaculo.y -= 5;
+    obstaculo.x -= 4;
     obstaculo.dibujar();
-    if (coche.detectarColision(obstaculo)) {
+    if (destructor.detectarColision(obstaculo)) {
       console.log("Has perdido");
     }
   }
 };
 
 const crearObstaculos = () => {
-  const randomPositionX = Math.floor(Math.random() * 480);
+  const randomPositionY = Math.floor(Math.random() * (530 - 300) + 300);
   const obstaculo = new Objeto(
-    randomPositionX,
-    570,
-    120,
-    60,
+    1000,
+    randomPositionY,
+    180,
+    70,
     obstaculoImagen,
     ctx
   );
   obstaculos.push(obstaculo);
+  console.log(obstaculo);
 };
+
 
 const cargaInicial = () => {
-  coche.dibujar();
-  setInterval(jugar, 200);
-  setInterval(crearObstaculos, 3000);
+  destructor.dibujar();
+  crearObstaculos();
+  setInterval(jugar, 100);
+  setInterval(crearObstaculos, 9000);
 };
 
-const moverCoche = (e) => {
-  coche.borrar();
+const moverdestructor = (e) => {
+  destructor.borrar();
   if (e.key === "ArrowLeft") {
-    coche.x -= 5;
+    destructor.x -= 15;
   }
   if (e.key === "ArrowRight") {
-    coche.x += 5;
+    destructor.x += 15;
   }
-  if (e.key === "ArrowUp") {
-    coche.y -= 5;
-  }
-  if (e.key === "ArrowDown") {
-    coche.y += 5;
-  }
-  coche.dibujar();
+  destructor.dibujar();
 };
 
 window.addEventListener("load", cargaInicial);
 
-window.addEventListener("keydown", moverCoche);
+window.addEventListener("keydown", moverdestructor);
