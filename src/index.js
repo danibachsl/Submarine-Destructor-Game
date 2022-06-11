@@ -20,10 +20,13 @@ destructorImagen.src = "src/destructor.png";
 let obstaculoImagen = new Image();
 obstaculoImagen.src = "src/icono_submarino.png";
 
+let barrilImagen = new Image();
+barrilImagen.src = "src/barril logo.jpeg";
+
 const obstaculos = [];
+const barriles = [];
 
 const destructor = new Objeto(731.5, 75, 213, 95, destructorImagen, ctx);
-
 
 
 const jugar = () => {
@@ -34,6 +37,14 @@ const jugar = () => {
     if (destructor.detectarColision(obstaculo)) {
       console.log("Has perdido");
     }
+  }
+  for (let barril of barriles) {
+      barril.borrar();
+      barril.y += 3;
+      barril.dibujar();
+      if (barril.detectarColision(obstaculo)) {
+          console.log("BOOM!");
+      }
   }
 };
 
@@ -50,6 +61,19 @@ const crearObstaculos = () => {
   obstaculos.push(obstaculo);
 };
 
+const crearBarril = () => {
+   const posicionPopaDestructor = destructor.x.width;
+   const barril = new Objeto(
+    posicionPopaDestructor,
+    destructor.y,
+    destructor.ancho,
+    destructor.alto,
+    barrilImagen,
+    ctx
+   );
+   barriles.push(barriles);
+}
+
 
 const cargaInicial = () => {
   destructor.dibujar();
@@ -59,6 +83,7 @@ const cargaInicial = () => {
 };
 
 const moverdestructor = (e) => {
+  
   destructor.borrar();
   if (e.key === "ArrowLeft") {
     destructor.x -= 15;
@@ -68,6 +93,7 @@ const moverdestructor = (e) => {
   }
   if (e.key === "Space") {
     this.shootPressed = true;
+
   }
   destructor.dibujar();
 };
