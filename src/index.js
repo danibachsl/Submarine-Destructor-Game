@@ -48,14 +48,13 @@ const crearObstaculos = () => {
     ctx
   );
   obstaculos.push(obstaculo);
-  console.log(obstaculo);
 };
 
 
 const cargaInicial = () => {
   destructor.dibujar();
   crearObstaculos();
-  setInterval(jugar, 100);
+  setInterval(jugar, 130);
   setInterval(crearObstaculos, 9000);
 };
 
@@ -66,6 +65,9 @@ const moverdestructor = (e) => {
   }
   if (e.key === "ArrowRight") {
     destructor.x += 15;
+  }
+  if (e.key === "Space") {
+    this.shootPressed = true;
   }
   destructor.dibujar();
 };
