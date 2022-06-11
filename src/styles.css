@@ -24,9 +24,6 @@ h1 {
 
  #canvas {
     border: 1px solid black;
-    background-image: url("./fondo_mar.jpeg");
-    background-size: contain;
-    background-repeat: repeat-x;
-  
+    background-image: url("./fondomarresized.png");
 }
 
