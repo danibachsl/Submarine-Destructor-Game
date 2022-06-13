@@ -16,11 +16,6 @@ class Objeto {
     ctx.clearRect(this.x, this.y, this.ancho, this.alto);
   }
 
-  shoot() {
-    if (this.shootPressed) {
-      console.log("shoot");
-    }
-  }
 
   detectarColision = (otroObjeto) => {
     if (otroObjeto.y + otroObjeto.alto < this.y) {

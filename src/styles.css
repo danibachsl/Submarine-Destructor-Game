@@ -6,7 +6,8 @@ body {
     padding: 0;
     margin: 0;
     height: 100vh;
-    background-image: url("./submarino wallpaper.jpeg");
+    background: url("./submarino wallpaper.jpeg") no-repeat center fixed;
+    background-size: cover;
 }
 
 h1 {
