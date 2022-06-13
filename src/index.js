@@ -21,10 +21,12 @@ let obstaculoImagen = new Image();
 obstaculoImagen.src = "src/icono_submarino.png";
 
 let barrilImagen = new Image();
-barrilImagen.src = "src/barril logo.jpeg";
+barrilImagen.src = "src/barril.png";
 
 const obstaculos = [];
 const barriles = [];
+
+let destructorx = "";
 
 const destructor = new Objeto(731.5, 75, 213, 95, destructorImagen, ctx);
 
@@ -38,14 +40,14 @@ const jugar = () => {
       console.log("Has perdido");
     }
   }
-  for (let barril of barriles) {
-      barril.borrar();
-      barril.y += 3;
-      barril.dibujar();
-      if (barril.detectarColision(obstaculo)) {
-          console.log("BOOM!");
-      }
-  }
+  // for (let barril of barriles) {
+  //     barril.borrar();
+  //     barril.y += 3;
+  //     barril.dibujar();
+  //     if (barril.detectarColision()) {
+  //         console.log("BOOM!");
+  //     }
+  // }
 };
 
 const crearObstaculos = () => {
@@ -61,17 +63,22 @@ const crearObstaculos = () => {
   obstaculos.push(obstaculo);
 };
 
-const crearBarril = () => {
-   const posicionPopaDestructor = destructor.x.width;
-   const barril = new Objeto(
-    posicionPopaDestructor,
+const crearBarril = (x) => {
+  if (x === '') {
+    x = 731.5;
+  } 
+  const posicionPopaDestructor = destructor.x.width;
+   const barril = new Barril(
+    x,
     destructor.y,
     destructor.ancho,
     destructor.alto,
     barrilImagen,
     ctx
    );
-   barriles.push(barriles);
+
+  barriles.push(barril);
+  barril.dibujar();
 }
 
 
@@ -87,13 +94,16 @@ const moverdestructor = (e) => {
   destructor.borrar();
   if (e.key === "ArrowLeft") {
     destructor.x -= 15;
+    destructorx = destructor.x -= 15;
   }
   if (e.key === "ArrowRight") {
     destructor.x += 15;
+    destructorx = destructor.x += 15;
   }
-  if (e.key === "Space") {
-    this.shootPressed = true;
-
+  if (e.code === "Space") {
+   // const barril = new Barril(destructorx, destructor.y, destructor.ancho, destructor.alto, barrilImagen, ctx);
+    console.log(barriles);
+    crearBarril(destructorx);
   }
   destructor.dibujar();
 };
