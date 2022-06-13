@@ -13,12 +13,12 @@ const ctx = canvas.getContext("2d");
 //     ctx.drawImage(background,0,0, 1000, 600);   
 // }
 //
- 
+
 let destructorImagen = new Image();
 destructorImagen.src = "src/destructor.png";
 
 let obstaculoImagen = new Image();
-obstaculoImagen.src = "src/icono_submarino recortada.png";
+obstaculoImagen.src = "src/icono_submarino.png";
 
 let barrilImagen = new Image();
 barrilImagen.src = "src/barril logo.jpeg";
@@ -38,34 +38,40 @@ const jugar = () => {
       console.log("Has perdido");
     }
   }
+  for (let barril of barriles) {
+      barril.borrar();
+      barril.y += 3;
+      barril.dibujar();
+      if (barril.detectarColision(obstaculo)) {
+          console.log("BOOM!");
+      }
+  }
 };
 
 const crearObstaculos = () => {
-  const randomPositionY = Math.floor(Math.random() * 530);
+  const randomPositionY = Math.floor(Math.random() * (530 - 300) + 300);
   const obstaculo = new Objeto(
     1000,
-    randomPositionY + 95,
+    randomPositionY,
     180,
-    30,
+    70,
     obstaculoImagen,
     ctx
   );
   obstaculos.push(obstaculo);
 };
 
-const crearBarriles = (e) => {
-    if (e.key === "Space") {   
-      for (let barril of barriles) {
-          barril.borrar();
-          barril.y += 3;
-          barril.dibujar();
-      }
-    }
-    
-    const barril = new Objeto(
-        
-    );
-    barriles.push(barril);
+const crearBarril = () => {
+   const posicionPopaDestructor = destructor.x.width;
+   const barril = new Objeto(
+    posicionPopaDestructor,
+    destructor.y,
+    destructor.ancho,
+    destructor.alto,
+    barrilImagen,
+    ctx
+   );
+   barriles.push(barriles);
 }
 
 
@@ -77,6 +83,7 @@ const cargaInicial = () => {
 };
 
 const moverdestructor = (e) => {
+  
   destructor.borrar();
   if (e.key === "ArrowLeft") {
     destructor.x -= 15;
@@ -84,13 +91,13 @@ const moverdestructor = (e) => {
   if (e.key === "ArrowRight") {
     destructor.x += 15;
   }
+  if (e.key === "Space") {
+    this.shootPressed = true;
 
+  }
   destructor.dibujar();
 };
-
 
 window.addEventListener("load", cargaInicial);
 
 window.addEventListener("keydown", moverdestructor);
-
-window.addEventListener("keydown", crearBarriles);
