@@ -50,6 +50,17 @@ const jugar = () => {
   // }
 };
 
+const jugarBarril = () => {
+  for (let barril of barriles) {
+    barril.borrar();
+    barril.y += 3;
+    barril.dibujar();
+    if (barril.detectarColision()) {
+      console.log("BOOM!");
+    }
+  }
+}
+
 const crearObstaculos = () => {
   const randomPositionY = Math.floor(Math.random() * (530 - 300) + 300);
   const obstaculo = new Objeto(
@@ -69,10 +80,10 @@ const crearBarril = (x) => {
   } 
   const posicionPopaDestructor = destructor.x.width;
    const barril = new Barril(
-    x,
+    destructor.x,
     destructor.y,
-    destructor.ancho,
-    destructor.alto,
+    20,
+    25,
     barrilImagen,
     ctx
    );
@@ -90,7 +101,6 @@ const cargaInicial = () => {
 };
 
 const moverdestructor = (e) => {
-  
   destructor.borrar();
   if (e.key === "ArrowLeft") {
     destructor.x -= 15;
@@ -101,7 +111,8 @@ const moverdestructor = (e) => {
     destructorx = destructor.x += 15;
   }
   if (e.code === "Space") {
-   // const barril = new Barril(destructorx, destructor.y, destructor.ancho, destructor.alto, barrilImagen, ctx);
+    setInterval(jugarBarril, 130);
+    //setInterval(crearBarril, 9000);
     console.log(barriles);
     crearBarril(destructorx);
   }
@@ -111,3 +122,29 @@ const moverdestructor = (e) => {
 window.addEventListener("load", cargaInicial);
 
 window.addEventListener("keydown", moverdestructor);
+
+
+
+
+
+// start() {
+//   this.toggleScreen('start-screen',false);
+//   this.toggleScreen('canvas',true);
+//   this.prepareCanvas();
+//   this.init();
+//   this.loop = setInterval(() => {
+//       this.update();
+//       this.render();
+//   }, 1000/this.fps);
+// };
+
+// toggleScreen(id,toggle) {
+//   let element = document.getElementById(id);
+//   let display = ( toggle ) ? 'block' : 'none';
+//   element.style.display = display;
+// };
+
+// function startGame() {
+//   gameloop.start();
+// }
+
