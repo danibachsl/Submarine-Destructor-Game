@@ -20,6 +20,7 @@ explosionImagen.src = "src/explosion logo.png";
 const obstaculos = [];
 const barriles = [];
 const explosiones = [];
+let counter = 0;
 
 let destructorx = "";
 
@@ -35,6 +36,7 @@ const jugar = () => {
 };
 
 const jugarBarril = () => {
+  let counter = 0;
   velocidadbarril = 4;
   barriles.forEach (barril => {
     barril.borrar();
@@ -50,8 +52,11 @@ const jugarBarril = () => {
         let obstaculoIndice = obstaculos.indexOf(obstaculo);  
         obstaculos.splice(obstaculoIndice, 1);
         obstaculo.borrar();
+
+        counter++;
+        document.getElementById("counter").innerText = counter;
       }
-    }                                                         // FIN COLISIÓN
+    }                                                         
   });
 }
 
@@ -95,7 +100,7 @@ const crearBarril = (x) => {
    );
 
   barriles.push(barril);
-  console.log(barriles);
+  // console.log(barriles);
 }
 
 
