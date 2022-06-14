@@ -4,7 +4,7 @@ canvas.height = 600;
 const ctx = canvas.getContext("2d");
 
 
-
+// IMÁGENES
 let destructorImagen = new Image();
 destructorImagen.src = "src/destructor.png";
 
@@ -17,10 +17,15 @@ barrilImagen.src = "src/barril.png";
 let explosionImagen = new Image();
 explosionImagen.src = "src/explosion logo.png";
 
+// ARRAYS
 const obstaculos = [];
 const barriles = [];
 const explosiones = [];
-let counter = 0;
+
+// AUDIOS
+var barrelaudio = new Audio('src/barrel drop.mp3');
+var explosionsubmarino = new Audio('src/Explosion submarino 2.mp3');
+
 
 let destructorx = "";
 
@@ -43,7 +48,8 @@ const jugarBarril = () => {
     barril.y += barril.velocidadbarril;
     barril.dibujar();
     for (let obstaculo of obstaculos) {
-      if (barril.detectarColision(obstaculo)) {               // COLISIÓN BARRIL CON SUBMARINO
+      if (barril.detectarColision(obstaculo)) { 
+        explosionsubmarino.play();                       // COLISIÓN BARRIL CON SUBMARINO
         let barrilindex = barriles.indexOf(barril);           
         barriles.splice(barrilindex, 1);      
         barril.borrar();
@@ -123,8 +129,7 @@ const moverdestructor = (e) => {
     destructorx = destructor.x += 15;
   }
   if (e.code === "Space") {
-    //jugarBarril();
-    //setInterval(jugarBarril, 130);
+    barrelaudio.play();
     console.log(barriles);
     crearBarril(destructorx);
   }
