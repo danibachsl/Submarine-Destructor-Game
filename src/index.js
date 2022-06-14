@@ -23,8 +23,12 @@ obstaculoImagen.src = "src/icono_submarino.png";
 let barrilImagen = new Image();
 barrilImagen.src = "src/barril.png";
 
+let explosionImagen = new Image();
+explosionImagen.src = "src/explosion logo.png";
+
 const obstaculos = [];
 const barriles = [];
+const explosiones = [];
 
 let destructorx = "";
 
@@ -55,7 +59,10 @@ const jugarBarril = () => {
     barril.dibujar();
     for (let obstaculo of obstaculos) {
       if (barril.detectarColision(obstaculo)) {
-        console.log("¡Tocado!");
+        // console.log("¡Tocado!");
+        barril.borrar();
+        explosion.dibujar();
+        obstaculo.borrar();
       }
     }
   }); 
@@ -76,6 +83,18 @@ const jugarBarril = () => {
     // }
  // }
   //setInterval(jugarBarril, 130);
+}
+
+const crearExplosion = () => {
+  const explosion = new Explosion(
+    barril.x,
+    barril.y,
+    20,
+    25,
+    explosionImagen,
+    ctx
+  );
+  explosiones.push(explosion);
 }
 
 const crearObstaculos = () => {
