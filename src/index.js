@@ -42,13 +42,14 @@ const jugarBarril = () => {
     barril.dibujar();
     for (let obstaculo of obstaculos) {
       if (barril.detectarColision(obstaculo)) {               // COLISIÓN BARRIL CON SUBMARINO
-        let barrilindex = barriles.indexOf(barril);           // Captamos índice barril
-        console.log("🚀 ~ file: index.js ~ line 46 ~ jugarBarril ~ barrilindex", barrilindex)
-        barriles.splice(barrilindex, 1);                      // Borramos barril del array
-        // explosion.dibujar();                                  // Dibujamos explosión
-        let obstaculoIndice = obstaculos.indexOf(obstaculo);  // Captamos índice del submarino
-        console.log("🚀 ~ file: index.js ~ line 50 ~ jugarBarril ~ obstaculoIndice", obstaculoIndice)
+        let barrilindex = barriles.indexOf(barril);           
+        barriles.splice(barrilindex, 1);      
+        barril.borrar();
+        // explosion.dibujar();            
+
+        let obstaculoIndice = obstaculos.indexOf(obstaculo);  
         obstaculos.splice(obstaculoIndice, 1);
+        obstaculo.borrar();
       }
     }                                                         // FIN COLISIÓN
   });
