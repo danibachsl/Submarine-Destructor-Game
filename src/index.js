@@ -3,16 +3,7 @@ canvas.width = 1000;
 canvas.height = 600;
 const ctx = canvas.getContext("2d");
 
-// canvas.style.backgroundColor = "lightgray";
 
-// var background = new Image();
-// background.src = "src/fondo_mar.jpeg";
-
-// // Make sure the image is loaded first otherwise nothing will draw.
-// background.onload = function(){
-//     ctx.drawImage(background,0,0, 1000, 600);   
-// }
-//
 
 let destructorImagen = new Image();
 destructorImagen.src = "src/destructor.png";
@@ -41,14 +32,6 @@ const jugar = () => {
     obstaculo.x -= 4;
     obstaculo.dibujar();
   }
-  // for (let barril of barriles) {
-  //     barril.borrar();
-  //     barril.y += 3;
-  //     barril.dibujar();
-  //     if (barril.detectarColision()) {
-  //         console.log("BOOM!");
-  //     }
-  // }
 };
 
 const jugarBarril = () => {
@@ -66,23 +49,6 @@ const jugarBarril = () => {
       }
     }
   }); 
-
-  //(let barril of barriles) {
-    // barril.borrar();
-    // barril.y += velocidadbarril;
-    // barril.dibujar();
-    // if (barril != null) {
-    //   barril.dibujar();
-    // }
-    // if (barril.detectarColision()) {
-    //   console.log("BOOM!");
-    // }
-    // if (barril.y >= 600) {
-    //   barril = null;
-      
-    // }
- // }
-  //setInterval(jugarBarril, 130);
 }
 
 const crearExplosion = () => {
