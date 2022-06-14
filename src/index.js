@@ -36,9 +36,6 @@ const jugar = () => {
     obstaculo.borrar();
     obstaculo.x -= 4;
     obstaculo.dibujar();
-    // if (destructor.detectarColision(obstaculo)) {
-    //   console.log("Has perdido");
-    // }
   }
   // for (let barril of barriles) {
   //     barril.borrar();
@@ -54,9 +51,15 @@ const jugarBarril = () => {
   velocidadbarril = 4;
   barriles.forEach (barril => {
     barril.borrar();
-    barril.y += velocidadbarril;
+    barril.y += barril.velocidadbarril;
     barril.dibujar();
+    for (let obstaculo of obstaculos) {
+      if (barril.detectarColision(obstaculo)) {
+        console.log("¡Tocado!");
+      }
+    }
   }); 
+
   //(let barril of barriles) {
     // barril.borrar();
     // barril.y += velocidadbarril;
@@ -104,7 +107,6 @@ const crearBarril = (x) => {
 
   barriles.push(barril);
   console.log(barriles);
-  setInterval(jugarBarril, 130);
 }
 
 
@@ -113,6 +115,7 @@ const cargaInicial = () => {
   crearObstaculos();
   setInterval(jugar, 200);
   setInterval(crearObstaculos, 9000);
+  setInterval(jugarBarril, 130);
 };
 
 const moverdestructor = (e) => {
