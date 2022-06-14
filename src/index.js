@@ -36,9 +36,9 @@ const jugar = () => {
     obstaculo.borrar();
     obstaculo.x -= 4;
     obstaculo.dibujar();
-    if (destructor.detectarColision(obstaculo)) {
-      console.log("Has perdido");
-    }
+    // if (destructor.detectarColision(obstaculo)) {
+    //   console.log("Has perdido");
+    // }
   }
   // for (let barril of barriles) {
   //     barril.borrar();
@@ -51,14 +51,28 @@ const jugar = () => {
 };
 
 const jugarBarril = () => {
-  for (let barril of barriles) {
+  velocidadbarril = 4;
+  barriles.forEach (barril => {
     barril.borrar();
-    barril.y += 3;
+    barril.y += velocidadbarril;
     barril.dibujar();
-    if (barril.detectarColision()) {
-      console.log("BOOM!");
-    }
-  }
+  }); 
+  //(let barril of barriles) {
+    // barril.borrar();
+    // barril.y += velocidadbarril;
+    // barril.dibujar();
+    // if (barril != null) {
+    //   barril.dibujar();
+    // }
+    // if (barril.detectarColision()) {
+    //   console.log("BOOM!");
+    // }
+    // if (barril.y >= 600) {
+    //   barril = null;
+      
+    // }
+ // }
+  //setInterval(jugarBarril, 130);
 }
 
 const crearObstaculos = () => {
@@ -78,10 +92,10 @@ const crearBarril = (x) => {
   if (x === '') {
     x = 731.5;
   } 
-  const posicionPopaDestructor = destructor.x.width;
+   const posicionPopaDestructor = destructor.x.width;
    const barril = new Barril(
-    destructor.x,
-    destructor.y,
+    destructor.x + 203,
+    destructor.y + 95,
     20,
     25,
     barrilImagen,
@@ -89,14 +103,15 @@ const crearBarril = (x) => {
    );
 
   barriles.push(barril);
-  barril.dibujar();
+  console.log(barriles);
+  setInterval(jugarBarril, 130);
 }
 
 
 const cargaInicial = () => {
   destructor.dibujar();
   crearObstaculos();
-  setInterval(jugar, 130);
+  setInterval(jugar, 200);
   setInterval(crearObstaculos, 9000);
 };
 
@@ -111,8 +126,8 @@ const moverdestructor = (e) => {
     destructorx = destructor.x += 15;
   }
   if (e.code === "Space") {
-    setInterval(jugarBarril, 130);
-    //setInterval(crearBarril, 9000);
+    //jugarBarril();
+    //setInterval(jugarBarril, 130);
     console.log(barriles);
     crearBarril(destructorx);
   }

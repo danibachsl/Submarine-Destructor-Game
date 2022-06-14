@@ -6,10 +6,16 @@ class Barril {
       this.alto = alto;
       this.imagen = imagen;
       this.ctx = ctx;
+      this.velocidadbarril = 4;
     }
-  
+
+
     dibujar() {
       ctx.drawImage(this.imagen, this.x, this.y, this.ancho, this.alto);
+    }
+
+    disparobarril() {
+        this.y = this.y + this.velocidadbarril;
     }
   
     borrar() {
