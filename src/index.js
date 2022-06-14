@@ -9,7 +9,7 @@ let destructorImagen = new Image();
 destructorImagen.src = "src/destructor.png";
 
 let obstaculoImagen = new Image();
-obstaculoImagen.src = "src/icono_submarino.png";
+obstaculoImagen.src = "src/icono_submarino recortada.png";
 
 let barrilImagen = new Image();
 barrilImagen.src = "src/barril.png";
@@ -41,22 +41,25 @@ const jugarBarril = () => {
     barril.y += barril.velocidadbarril;
     barril.dibujar();
     for (let obstaculo of obstaculos) {
-      if (barril.detectarColision(obstaculo)) {
-        // console.log("¡Tocado!");
-        barril.borrar();
-        explosion.dibujar();
-        obstaculo.borrar();
+      if (barril.detectarColision(obstaculo)) {               // COLISIÓN BARRIL CON SUBMARINO
+        let barrilindex = barriles.indexOf(barril);           // Captamos índice barril
+        console.log("🚀 ~ file: index.js ~ line 46 ~ jugarBarril ~ barrilindex", barrilindex)
+        barriles.splice(barrilindex, 1);                      // Borramos barril del array
+        // explosion.dibujar();                                  // Dibujamos explosión
+        let obstaculoIndice = obstaculos.indexOf(obstaculo);  // Captamos índice del submarino
+        console.log("🚀 ~ file: index.js ~ line 50 ~ jugarBarril ~ obstaculoIndice", obstaculoIndice)
+        obstaculos.splice(obstaculoIndice, 1);
       }
-    }
-  }); 
+    }                                                         // FIN COLISIÓN
+  });
 }
 
 const crearExplosion = () => {
   const explosion = new Explosion(
     barril.x,
     barril.y,
-    20,
-    25,
+    30,
+    30,
     explosionImagen,
     ctx
   );
@@ -68,8 +71,8 @@ const crearObstaculos = () => {
   const obstaculo = new Objeto(
     1000,
     randomPositionY,
-    180,
-    70,
+    165,
+    27,
     obstaculoImagen,
     ctx
   );
