@@ -44,7 +44,8 @@ const jugar = () => {
     obstaculo.x -= 4;
     obstaculo.dibujar();
     // if (obstaculo.comprobarPosicionEnCanvas()){
-    //     // Ejecutar GAME OVER
+    //     // gameOver = true;
+           // setInterval(drawDeath, 10) //Death Detection
     // }
   }
 };
