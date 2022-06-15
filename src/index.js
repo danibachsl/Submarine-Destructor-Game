@@ -21,6 +21,7 @@ explosionImagen.src = "src/explosion logo.png";
 const obstaculos = [];
 const barriles = [];
 const explosiones = [];
+let counter = 0;
 
 // AUDIOS
 var barrelaudio = new Audio('src/barrel drop.mp3');
@@ -41,7 +42,6 @@ const jugar = () => {
 };
 
 const jugarBarril = () => {
-  let counter = 0;
   velocidadbarril = 4;
   barriles.forEach (barril => {
     barril.borrar();
