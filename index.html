@@ -9,8 +9,11 @@
     <body>
         
         <h1>Boot Destructor</h1>
-        <canvas id="canvas" width="1300" height="650"> </canvas>
+        <div id="main">
+            <canvas id="canvas" width="1300" height="650"> </canvas>
+        </div>
 
+        <div id="newGame" onclick="runGame()" onmouseover="this.style.backgroundColor = 'goldenrod'" onmouseout="this.style.backgroundColor = 'gold'">Start Game</div>
         <div class="textocounter">
             <span>Submarinos eliminados: </span>
             <span id="counter">0</span>

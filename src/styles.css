@@ -1,3 +1,15 @@
+
+
+#main {
+    display: none;
+}
+
+#newGame {
+    align-items: center;
+}
+
+
+
 body {
     font-family: sans-serif;
     display: flex;
@@ -6,7 +18,7 @@ body {
     padding: 0;
     margin: 0;
     height: 100vh;
-    background-image: url("./submarino wallpaper.jpeg");
+    background-image: url("./start game wallpaper.jpeg");
 }
 
 h1 {

@@ -32,11 +32,20 @@ let destructorx = "";
 const destructor = new Objeto(731.5, 75, 213, 95, destructorImagen, ctx);
 
 
+var runGame = function () {
+  document.getElementById("newGame").style.display = "none";
+  document.getElementById("main").style.display = "block";
+};
+
+
 const jugar = () => {
   for (let obstaculo of obstaculos) {
     obstaculo.borrar();
     obstaculo.x -= 4;
     obstaculo.dibujar();
+    // if (obstaculo.comprobarPosicionEnCanvas()){
+    //     // Ejecutar GAME OVER
+    // }
   }
 };
 
