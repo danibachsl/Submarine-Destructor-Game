@@ -20,7 +20,6 @@ explosionImagen.src = "src/explosion logo.png";
 // ARRAYS
 const obstaculos = [];
 const barriles = [];
-const explosiones = [];
 let counter = 0;
 
 // AUDIOS
@@ -52,13 +51,11 @@ const jugarBarril = () => {
         explosionsubmarino.play();                       // COLISIÓN BARRIL CON SUBMARINO
         let barrilindex = barriles.indexOf(barril);           
         barriles.splice(barrilindex, 1);      
-        barril.borrar();
-        // explosion.dibujar();            
-
+        barril.borrar();           
         let obstaculoIndice = obstaculos.indexOf(obstaculo);  
         obstaculos.splice(obstaculoIndice, 1);
         obstaculo.borrar();
-
+        crearExplosion(barril); 
         counter++;
         document.getElementById("counter").innerText = counter;
       }
@@ -66,16 +63,17 @@ const jugarBarril = () => {
   });
 }
 
-const crearExplosion = () => {
+const crearExplosion = (barril) => {
   const explosion = new Explosion(
     barril.x,
     barril.y,
-    30,
-    30,
+    70,
+    70,
     explosionImagen,
     ctx
   );
-  explosiones.push(explosion);
+  explosion.dibujar();
+  setTimeout(() => explosion.borrar(), 1000);
 }
 
 const crearObstaculos = () => {
@@ -106,7 +104,6 @@ const crearBarril = (x) => {
    );
 
   barriles.push(barril);
-  // console.log(barriles);
 }
 
 
