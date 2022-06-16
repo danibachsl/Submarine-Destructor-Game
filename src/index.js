@@ -34,8 +34,8 @@ const destructor = new Objeto(731.5, 75, 213, 95, destructorImagen, ctx);
 
 var runGame = function () {
   document.getElementById("newGame").style.display = "none";
-  
   document.getElementById("main").style.display = "block";
+  backgroundsong.pause();
 };
 
 
@@ -81,7 +81,7 @@ const jugarBarril = () => {
           ctx.textAlign = 'center';
           ctx.fillStyle = "#000000";
           ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.fillText("!!HAS GANADO!! LOS SUBMARINOS SE RETIRAN ;)", canvas.width/2, canvas.height/2);
+          ctx.fillText("¡¡HAS GANADO!! LOS SUBMARINOS SE RETIRAN ;)", canvas.width/2, canvas.height/2);
         }
       }
     }                                                         
