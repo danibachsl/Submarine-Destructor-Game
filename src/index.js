@@ -41,7 +41,7 @@ var runGame = function () {
 const jugar = () => {
   for (let obstaculo of obstaculos) {
     obstaculo.borrar();
-    obstaculo.x -= 4;
+    obstaculo.x -= 10;
     obstaculo.dibujar();
     if (obstaculo.x <= 0){
         function gameOver() {                                            // FUNCIÓN GAME-OVER
@@ -122,6 +122,12 @@ const crearBarril = (x) => {
   barriles.push(barril);
 }
 
+// const contador = (counter) => {
+//   ctx.font = "30px Courier New";
+//   ctx.textAlign = 'start';
+//   ctx.fillStyle = "#000000";
+//   ctx.fillText(`Submarinos eliminados: ${counter}`, canvas.x, canvas.y);
+// }
 
 const cargaInicial = () => {
   destructor.dibujar();
@@ -129,10 +135,7 @@ const cargaInicial = () => {
   setInterval(jugar, 200);
   setInterval(crearObstaculos, 9000);
   setInterval(jugarBarril, 130);
-  ctx.font = "30px Courier New";
-  ctx.textAlign = 'center';
-  ctx.fillStyle = "#000000";
-  ctx.fillText("Submarinos eliminados: ", canvas.x, canvas.y);
+  contador();
 };
 
 const moverdestructor = (e) => {
