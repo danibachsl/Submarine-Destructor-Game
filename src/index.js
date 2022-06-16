@@ -48,10 +48,8 @@ const jugar = () => {
           ctx.font = "30px Courier New";
           ctx.textAlign = 'center';
           ctx.fillStyle = "#000000";
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
           ctx.fillText("GAME OVER...¡Te han torpedeado! :(", canvas.width/2, canvas.height/2);
-          if (downPressed == true) {
-            document.location.reload();
-          }
         }
         gameOver();
     }
@@ -131,6 +129,10 @@ const cargaInicial = () => {
   setInterval(jugar, 200);
   setInterval(crearObstaculos, 9000);
   setInterval(jugarBarril, 130);
+  ctx.font = "30px Courier New";
+  ctx.textAlign = 'center';
+  ctx.fillStyle = "#000000";
+  ctx.fillText("Submarinos eliminados: ", canvas.x, canvas.y);
 };
 
 const moverdestructor = (e) => {
