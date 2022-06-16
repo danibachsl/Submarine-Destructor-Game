@@ -44,11 +44,11 @@ const jugar = () => {
     obstaculo.x -= 4;
     obstaculo.dibujar();
     if (obstaculo.x <= 0){
-        function gameOver() {
-          ctx.font = "20px Courier New";
+        function gameOver() {                                            // FUNCIÓN GAME-OVER
+          ctx.font = "30px Courier New";
           ctx.textAlign = 'center';
           ctx.fillStyle = "#000000";
-          ctx.fillText("HAHA YU LOOZD (pres doun arouw tu x-it)", canvas.width/2, canvas.height/2);
+          ctx.fillText("GAME OVER...¡Te han torpedeado! :(", canvas.width/2, canvas.height/2);
           if (downPressed == true) {
             document.location.reload();
           }
@@ -65,8 +65,8 @@ const jugarBarril = () => {
     barril.y += barril.velocidadbarril;
     barril.dibujar();
     for (let obstaculo of obstaculos) {
-      if (barril.detectarColision(obstaculo)) { 
-        explosionsubmarino.play();                       // COLISIÓN BARRIL CON SUBMARINO
+      if (barril.detectarColision(obstaculo)) {                 // COLISIÓN BARRIL CON SUBMARINO
+        explosionsubmarino.play();                      
         let barrilindex = barriles.indexOf(barril);           
         barriles.splice(barrilindex, 1);      
         barril.borrar();           
@@ -154,29 +154,3 @@ const moverdestructor = (e) => {
 window.addEventListener("load", cargaInicial);
 
 window.addEventListener("keydown", moverdestructor);
-
-
-
-
-
-// start() {
-//   this.toggleScreen('start-screen',false);
-//   this.toggleScreen('canvas',true);
-//   this.prepareCanvas();
-//   this.init();
-//   this.loop = setInterval(() => {
-//       this.update();
-//       this.render();
-//   }, 1000/this.fps);
-// };
-
-// toggleScreen(id,toggle) {
-//   let element = document.getElementById(id);
-//   let display = ( toggle ) ? 'block' : 'none';
-//   element.style.display = display;
-// };
-
-// function startGame() {
-//   gameloop.start();
-// }
-
