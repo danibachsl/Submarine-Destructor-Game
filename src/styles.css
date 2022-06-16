@@ -7,6 +7,7 @@
 #newGame {
     align-items: center;
     text-align: center;
+    line-height: 45px;
     vertical-align: middle;
     border: 2px solid goldenrod;
     border-radius: 7px;
@@ -15,7 +16,8 @@
     font-size: 30px;
     font-weight: lighter;
     font-family: "Courier New";
-    width: 5em;
+    width: 8em;
+    height: 1.5em;
     margin: 5px auto;
 }
 
@@ -43,14 +45,13 @@ h1 {
     background-image: url("./fondomarresized.png");
 }
 
-.textocounter span{
-    font-size: 1.5em;
-    color: #05c46b;
-}
-
 .textocounter {
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-top: -600px;
+    margin-bottom: -25px;
+    margin-left: 10px;
+    z-index: 10;
+    font-size: 1.5em;
+    color: black;
 }
 
 button {
