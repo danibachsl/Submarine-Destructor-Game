@@ -43,10 +43,18 @@ const jugar = () => {
     obstaculo.borrar();
     obstaculo.x -= 4;
     obstaculo.dibujar();
-    // if (obstaculo.comprobarPosicionEnCanvas()){
-    //     // gameOver = true;
-           // setInterval(drawDeath, 10) //Death Detection
-    // }
+    if (obstaculo.x <= 0){
+        function gameOver() {
+          ctx.font = "20px Courier New";
+          ctx.textAlign = 'center';
+          ctx.fillStyle = "#000000";
+          ctx.fillText("HAHA YU LOOZD (pres doun arouw tu x-it)", canvas.width/2, canvas.height/2);
+          if (downPressed == true) {
+            document.location.reload();
+          }
+        }
+        gameOver();
+    }
   }
 };
 
