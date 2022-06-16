@@ -140,11 +140,11 @@ const cargaInicial = () => {
 
 const moverdestructor = (e) => {
   destructor.borrar();
-  if (e.key === "ArrowLeft") {
+  if (e.key === "ArrowLeft" && destructor.x >= 10) {
     destructor.x -= 15;
     destructorx = destructor.x -= 15;
   }
-  if (e.key === "ArrowRight") {
+  if (e.key === "ArrowRight" && destructor.x <= canvas.width - 213) {
     destructor.x += 15;
     destructorx = destructor.x += 15;
   }
