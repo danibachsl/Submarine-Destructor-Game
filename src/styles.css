@@ -6,8 +6,18 @@
 
 #newGame {
     align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    border: 2px solid goldenrod;
+    border-radius: 7px;
+    background-color: gold;
+    color: orangeRed;
+    font-size: 30px;
+    font-weight: lighter;
+    font-family: "Courier New";
+    width: 5em;
+    margin: 5px auto;
 }
-
 
 
 body {
