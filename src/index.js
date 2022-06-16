@@ -25,7 +25,7 @@ let counter = 0;
 // AUDIOS
 var barrelaudio = new Audio('src/barrel drop.mp3');
 var explosionsubmarino = new Audio('src/Explosion submarino 2.mp3');
-
+var backgroundsong = new Audio('src/backgroundsong.mp3');
 
 let destructorx = "";
 
@@ -34,6 +34,7 @@ const destructor = new Objeto(731.5, 75, 213, 95, destructorImagen, ctx);
 
 var runGame = function () {
   document.getElementById("newGame").style.display = "none";
+  
   document.getElementById("main").style.display = "block";
 };
 
@@ -71,9 +72,17 @@ const jugarBarril = () => {
         let obstaculoIndice = obstaculos.indexOf(obstaculo);  
         obstaculos.splice(obstaculoIndice, 1);
         obstaculo.borrar();
-        crearExplosion(barril); 
-        counter++;
-        document.getElementById("counter").innerText = counter;
+        crearExplosion(barril);
+        if (counter < 4) {
+          counter++;
+          document.getElementById("counter").innerText = counter;
+        } else {
+          ctx.font = "30px Courier New";
+          ctx.textAlign = 'center';
+          ctx.fillStyle = "#000000";
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.fillText("!!HAS GANADO!! LOS SUBMARINOS SE RETIRAN ;)", canvas.width/2, canvas.height/2);
+        }
       }
     }                                                         
   });
@@ -136,6 +145,7 @@ const cargaInicial = () => {
   setInterval(crearObstaculos, 9000);
   setInterval(jugarBarril, 130);
   contador();
+  backgroundsong.play();
 };
 
 const moverdestructor = (e) => {
