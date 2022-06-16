@@ -49,7 +49,7 @@ const jugar = () => {
           ctx.textAlign = 'center';
           ctx.fillStyle = "#000000";
           ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.fillText("GAME OVER...¡Te han torpedeado! :(", canvas.width/2, canvas.height/2);
+          ctx.fillText("GAME OVER...¡Te han torpedeado! X(", canvas.width/2, canvas.height/2);
         }
         gameOver();
     }
