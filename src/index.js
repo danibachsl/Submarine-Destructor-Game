@@ -131,13 +131,6 @@ const crearBarril = (x) => {
   barriles.push(barril);
 }
 
-// const contador = (counter) => {
-//   ctx.font = "30px Courier New";
-//   ctx.textAlign = 'start';
-//   ctx.fillStyle = "#000000";
-//   ctx.fillText(`Submarinos eliminados: ${counter}`, canvas.x, canvas.y);
-// }
-
 const cargaInicial = () => {
   destructor.dibujar();
   crearObstaculos();
